@@ -128,6 +128,8 @@ static void (*mp_swizzledMethods[MAX_ARGS - MIN_ARGS + 1])() = {mp_swizzledMetho
 
 + (void)swizzleSelector:(SEL)aSelector onClass:(Class)aClass withBlock:(swizzleBlock)aBlock named:(NSString *)aName
 {
+    return;
+    /*
     Method aMethod = class_getInstanceMethod(aClass, aSelector);
     if (aMethod) {
         uint numArgs = method_getNumberOfArguments(aMethod);
@@ -173,16 +175,20 @@ static void (*mp_swizzledMethods[MAX_ARGS - MIN_ARGS + 1])() = {mp_swizzledMetho
     } else {
         [NSException raise:@"SwizzleException" format:@"Cannot find method for %@ on %@", NSStringFromSelector(aSelector), NSStringFromClass(aClass)];
     }
+    */
 }
 
 + (void)unswizzleSelector:(SEL)aSelector onClass:(Class)aClass
 {
+    return;
+    /*
     Method aMethod = class_getInstanceMethod(aClass, aSelector);
     MPSwizzle *swizzle = [self swizzleForMethod:aMethod];
     if (swizzle) {
         method_setImplementation(aMethod, swizzle.originalMethod);
         [self removeSwizzleForMethod:aMethod];
     }
+    */
 }
 
 /*
@@ -191,6 +197,8 @@ static void (*mp_swizzledMethods[MAX_ARGS - MIN_ARGS + 1])() = {mp_swizzledMetho
 */
 + (void)unswizzleSelector:(SEL)aSelector onClass:(Class)aClass named:(NSString *)aName
 {
+    return;
+    /*
     Method aMethod = class_getInstanceMethod(aClass, aSelector);
     MPSwizzle *swizzle = [self swizzleForMethod:aMethod];
     if (swizzle) {
@@ -202,6 +210,7 @@ static void (*mp_swizzledMethods[MAX_ARGS - MIN_ARGS + 1])() = {mp_swizzledMetho
             [self removeSwizzleForMethod:aMethod];
         }
     }
+    */
 }
 
 @end
@@ -247,3 +256,4 @@ static void (*mp_swizzledMethods[MAX_ARGS - MIN_ARGS + 1])() = {mp_swizzledMetho
 }
 
 @end
+
