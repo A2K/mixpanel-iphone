@@ -34,7 +34,7 @@
 
 #endif
 
-
+#define DISABLE_MIXPANEL_AB_DESIGNER
 #define VERSION @"2.8.3"
 
 #if !defined(MIXPANEL_APP_EXTENSION)
@@ -106,13 +106,13 @@ static Mixpanel *sharedInstance = nil;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        
+
 #if defined(DEBUG)
         const NSUInteger flushInterval = 1;
 #else
         const NSUInteger flushInterval = 60;
 #endif
-        
+
         sharedInstance = [[super alloc] initWithToken:apiToken launchOptions:launchOptions andFlushInterval:flushInterval];
     });
     return sharedInstance;
@@ -612,7 +612,7 @@ static __unused NSString *MPURLEncode(NSString *s)
 
         [self flushEvents];
         [self flushPeople];
-        
+
         if (handler) {
             [self archive];
             dispatch_async(dispatch_get_main_queue(), handler);
@@ -1511,7 +1511,7 @@ static void MixpanelReachabilityCallback(SCNetworkReachabilityRef target, SCNetw
                 [self.people append:@{@"$answers": answers[i]}];
             }
         }
-        
+
         dispatch_async(_serialQueue, ^{
             [self flushPeople];
         });
@@ -2016,3 +2016,4 @@ static void MixpanelReachabilityCallback(SCNetworkReachabilityRef target, SCNetw
 }
 
 @end
+
