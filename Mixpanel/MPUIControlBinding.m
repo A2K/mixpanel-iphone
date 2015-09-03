@@ -141,6 +141,7 @@
 
         executeBlock(nil, _cmd);
 
+        /*
         [MPSwizzler swizzleSelector:NSSelectorFromString(@"didMoveToWindow")
                             onClass:self.swizzleClass
                           withBlock:executeBlock
@@ -149,6 +150,7 @@
                             onClass:self.swizzleClass
                           withBlock:executeBlock
                               named:self.name];
+        */
         self.running = true;
     }
 }
@@ -156,6 +158,7 @@
 - (void)stop
 {
     if (self.running) {
+        /*
         // remove what has been swizzled
         [MPSwizzler unswizzleSelector:NSSelectorFromString(@"didMoveToWindow")
                             onClass:self.swizzleClass
@@ -163,6 +166,7 @@
         [MPSwizzler unswizzleSelector:NSSelectorFromString(@"didMoveToSuperview")
                             onClass:self.swizzleClass
                               named:self.name];
+        */
 
         // remove target-action pairs
         for (UIControl *control in [self.appliedTo allObjects]) {
@@ -236,3 +240,4 @@
 }
 
 @end
+

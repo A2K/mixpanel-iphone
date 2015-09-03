@@ -87,10 +87,12 @@
             }
         };
 
+        /*
         [MPSwizzler swizzleSelector:@selector(tableView:didSelectRowAtIndexPath:)
                             onClass:self.swizzleClass
                           withBlock:block
                               named:self.name];
+        */
         self.running = true;
     }
 }
@@ -98,9 +100,11 @@
 - (void)stop
 {
     if (self.running && self.swizzleClass != nil) {
+        /*
         [MPSwizzler unswizzleSelector:@selector(tableView:didSelectRowAtIndexPath:)
                               onClass:self.swizzleClass
                                 named:self.name];
+        */
         self.running = false;
     }
 }
@@ -120,3 +124,4 @@
 }
 
 @end
+

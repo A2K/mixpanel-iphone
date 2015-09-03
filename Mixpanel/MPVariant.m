@@ -318,7 +318,7 @@ static NSMapTable *originalCache;
     BOOL cacheOriginal = !object[@"cacheOriginal"] || [object[@"swizzle"] boolValue];
     NSArray *original = [object[@"original"] isKindOfClass:[NSArray class]] ? object[@"original"] : nil;
     NSString *name = object[@"name"];
-    BOOL swizzle = !object[@"swizzle"] || [object[@"swizzle"] boolValue];
+    BOOL swizzle = NO;
     Class swizzleClass = NSClassFromString(object[@"swizzleClass"]);
     SEL swizzleSelector = NSSelectorFromString(object[@"swizzleSelector"]);
 
@@ -736,3 +736,4 @@ static NSMapTable *originalCache;
 }
 
 @end
+
